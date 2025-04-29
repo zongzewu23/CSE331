@@ -1,0 +1,32 @@
+/*!***************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/app.css ***!
+  \***************************************************************/
+P.item { margin-left: 15px; }
+
+P.item > SELECT { margin-left: 5px; }
+
+INPUT.rows { margin-left: 5px; width: 35px; }
+INPUT.option { margin-right: 5px; }
+
+IMG.block {
+  width: 118px;
+  height: 118px;
+}
+
+IMG.orrient-line-tb {}
+IMG.orrient-line-lr {transform: rotate(180deg);}
+
+IMG.rotate-angle-tl {}
+IMG.rotate-angle-br { transform: rotate(180deg); }
+IMG.rotate-angle-tr { transform: rotate(90deg); }
+IMG.rotate-angle-bl { transform: rotate(-90deg); }
+
+DIV.row {
+  height: 120px;
+}
+
+BUTTON {
+  margin: 2px 2px 4px 2px;
+}
+
+/*# sourceMappingURL=078b4870c38106a82a73.css.map*/
