@@ -62,8 +62,8 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: build
-          path: dist/
+          name: build-files
+          path: dist
 
   deploy:
     name: Deploy to GitHub Pages
@@ -76,7 +76,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
-          name: build
+          name: build-files
           path: dist
       
       - name: Deploy to GitHub Pages
