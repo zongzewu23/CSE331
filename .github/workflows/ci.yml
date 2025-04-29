@@ -41,8 +41,8 @@ jobs:
       - name: Run tests
         run: npm test
 
-  build:
-    name: Build Application
+  build-and-deploy:
+    name: Build and Deploy
     needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
@@ -59,28 +59,10 @@ jobs:
       - name: Build app
         run: npm run build
       
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-files
-          path: dist
-
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: [build]
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build-files
-          path: dist
-      
+      # 直接部署，无需上传/下载工件
       - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist
+          folder: dist  # 基于你的webpack可能输出的目录
           branch: gh-pages
