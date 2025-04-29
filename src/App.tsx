@@ -32,7 +32,12 @@ export class App extends Component<AppProps, AppState> {
   render = (): JSX.Element => {
     if (this.state.renderPipe === true) {
       // TODO: add needed props to Viewer
-      return <Viewer></Viewer>
+      return <Viewer design={this.state.design} 
+                     initialColor={this.state.color}  
+                     initialRows={this.state.rows}
+                     initFlip={this.state.flip}
+                     initDouble={this.state.double}
+                     onBack={this.doBackClick}></Viewer>
     } else {
       return this.renderPipeForm();
     }
@@ -83,6 +88,16 @@ export class App extends Component<AppProps, AppState> {
   }
 
   // TODO: update methods or add new ones as needed
+  doBackClick = (design: string, rows: bigint, color: string, flip: boolean, double: boolean): void => {
+    this.setState({
+      renderPipe: false,
+      design: design,
+      color: color,
+      rows: rows,
+      flip: flip,
+      double: double
+    });
+  }
 
   doDesignChange = (evt: ChangeEvent<HTMLSelectElement>): void => {
     this.setState({design: evt.target.value, error: ""});
